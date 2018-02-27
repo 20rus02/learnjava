@@ -22,18 +22,20 @@ public class Main {
 
         System.out.println("Starting the loop");
         while (true) {
+            System.gc();
+            Thread.sleep(10);
+            Runtime runtime = Runtime.getRuntime();
+            long mem = runtime.totalMemory() - runtime.freeMemory();
+            System.out.println("Memory in use: " + mem);
+
             Object[] array = new Object[size];
             System.out.println("New array of size: " + array.length + " created");
             for (int i = 0; i < size; i++) {
-                System.gc();
-                Thread.sleep(10000);
-                Runtime runtime = Runtime.getRuntime();
-                long mem = runtime.totalMemory() - runtime.freeMemory();
-                System.out.println("Memory in use: " + mem);
 //                array[i] = new Object();
-//                array[i] = new String(""); //String pool
+                array[i] = new String(""); //String pool
 //                array[i] = new String(new char[0]); //without String pool
-                array[i] = new MyClass();
+//                array[i] = new MyClass();
+//                array[i] = new Integer(11111);
             }
             System.out.println("Created " + size + " objects.");
             Thread.sleep(1000); //wait for 1 sec
