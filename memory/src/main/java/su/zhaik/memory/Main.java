@@ -23,7 +23,7 @@ public class Main {
         System.out.println("Starting the loop");
         while (true) {
             System.gc();
-            Thread.sleep(10);
+            Thread.sleep(1000);
             Runtime runtime = Runtime.getRuntime();
             long mem = runtime.totalMemory() - runtime.freeMemory();
             System.out.println("Memory in use: " + mem);
